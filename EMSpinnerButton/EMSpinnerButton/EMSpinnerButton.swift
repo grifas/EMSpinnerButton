@@ -119,7 +119,7 @@ open class EMSpinnerButton: UIButton {
 }
 
 internal extension EMSpinnerButton {
-  internal func setUp() {
+	func setUp() {
     self.titleLabel?.font = UIFont.systemFont(ofSize: 15, weight: .medium)
     self.backgroundColor = .emLightBlue
     self.titleColor = .white
@@ -129,7 +129,7 @@ internal extension EMSpinnerButton {
 // MARK: - Animation Methods
 internal extension EMSpinnerButton {
   
-  internal func collapseAnimation() {
+	func collapseAnimation() {
     storedTitle = title
     title = ""
     isUserInteractionEnabled = false
@@ -138,7 +138,7 @@ internal extension EMSpinnerButton {
     animaton.fromValue = frame.width
     animaton.toValue =  frame.height
     animaton.duration = animationDuration
-    animaton.fillMode = kCAFillModeForwards
+	animaton.fillMode = CAMediaTimingFillMode.forwards
     animaton.isRemovedOnCompletion = false
     
     layer.add(animaton, forKey: animaton.keyPath)
@@ -146,7 +146,7 @@ internal extension EMSpinnerButton {
     spinner.startAnimation()
   }
   
-  internal func backToDefaults() {
+	func backToDefaults() {
     
     spinner.stopAnimation()
     setTitle(storedTitle, for: .normal)
@@ -156,14 +156,14 @@ internal extension EMSpinnerButton {
     animaton.fromValue = frame.height
     animaton.toValue = frame.width
     animaton.duration = animationDuration
-    animaton.fillMode = kCAFillModeForwards
+	animaton.fillMode = CAMediaTimingFillMode.forwards
     animaton.isRemovedOnCompletion = false
     
     layer.add(animaton, forKey: animaton.keyPath)
     spinner.isHidden = true
   }
   
-  internal func shakeAnimation() {
+	func shakeAnimation() {
     
     UIView.animateKeyframes(withDuration: 0.5, delay: 0, options: [], animations: {
       
@@ -207,7 +207,7 @@ public extension EMSpinnerButton {
    Animates the the button with the given animation
    - parameter animation: Type of animation that will be executed
    */
-  public func animate(animation: AnimationType) {
+	func animate(animation: AnimationType) {
     
     switch animation {
       
